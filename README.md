@@ -32,3 +32,8 @@ Le differenze sono nell'utilizzo di una struttura dati per memorizzare i client 
 
 **NOTA**
 La struttura dati usata per tale scopo e' la HashMap per la semplicita' e velocita' della ricerca.
+
+## Eventuali modifiche richieste allo studente
+1. Modificare Client per richiedre all'utente un "user name" affinche' possa essere inviato al server insieme ai messaggi
+2. Modificare il Client per dare una interfaccia grafica all'utente (vedi WhatsApp)
+3. Modificare il Server per inviare gli utlimi 10 messaggi della CHAT e quindi la lista degli utenti collegati alla chat quando un nuovo utente si collega per la prima volta
