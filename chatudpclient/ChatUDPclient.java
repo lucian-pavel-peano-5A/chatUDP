@@ -5,6 +5,7 @@
  */
 package chatudpclient;
 
+import java.awt.EventQueue;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.DatagramPacket;
@@ -16,7 +17,6 @@ import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import chatudpclient.ReceiveFromServerAndPrint;
 
 /**
  *
@@ -28,8 +28,27 @@ public class ChatUDPclient {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws UnknownHostException {
+/**
+ * Modificare Client per richiedre all'utente un "user name" affinche'
+ * possa essere inviato al server insieme ai messaggi
+ */
 
-        String IP_address = "127.0.0.1";
+        Runnable r = new Runnable() {
+            public void run() {
+                new ChatUDPclient();
+            }
+        };
+             
+        EventQueue.invokeLater(r);
+
+        try {
+            
+            javax.swing.SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                new GUI();
+            }
+        });
+        String IP_address = "10.100.7.200";
         InetAddress address = InetAddress.getByName(IP_address);
         int UDP_port = 1077;
 
@@ -38,7 +57,7 @@ public class ChatUDPclient {
         try {
 
             socket = new DatagramSocket();
-            
+
 
             //creo il thread che riceve i messaggi dal server e scrive su schermo i messaggi ricevuti
             Thread receiveAndPrint = new Thread(new ReceiveFromServerAndPrint(socket));
@@ -66,5 +85,8 @@ public class ChatUDPclient {
         }
 
         }
-    
+    catch (Exception ex) {
+            System.out.println(ex.toString());
+        }
+}
 }
