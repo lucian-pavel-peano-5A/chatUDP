@@ -1,4 +1,4 @@
-package chatgui;
+package chatudpclient;
 
 import java.awt.EventQueue;
 import java.awt.GridLayout;
