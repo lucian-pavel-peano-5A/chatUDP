@@ -33,19 +33,13 @@ public class ChatUDPclient {
  * possa essere inviato al server insieme ai messaggi
  */
 
-        Runnable r = new Runnable() {
-            public void run() {
-                new ChatUDPclient();
-            }
-        };
-             
-        EventQueue.invokeLater(r);
+
 
         try {
             
             javax.swing.SwingUtilities.invokeLater(new Runnable() {
             public void run() {
-                new GUI();
+                new ChatGui();
             }
         });
         String IP_address = "10.100.7.200";
